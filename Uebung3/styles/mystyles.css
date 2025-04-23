@@ -1,0 +1,48 @@
+
+
+header h2{
+    text-align:center;
+}
+
+.item-a{
+    grid-area: header;
+}
+
+.header{
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+    background-color: green;
+    text-align: center;
+    grid-column: 1/-1;
+    border-radius:8px;
+}
+
+.citycard{
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.cityimage img{
+    width: 100px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.cityname p{
+    margin:0;
+    font-weight:bold;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow:0 10px 10px rgba(0,0,0,0.1);
+}
