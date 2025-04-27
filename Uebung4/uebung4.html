@@ -26,10 +26,13 @@
             background-color:gray;
             border-color:gray;
         }
-        input[type="submit"]{
+        input[type="button"]{
             color:white;
             border-color:#1b8454;
             background-color:#1b8454;
+        }
+        div[id="reactive"]{
+            padding-top:20px;
         }
     </style>
 </head>
@@ -43,28 +46,64 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <input type="text" placeholder="First Name">
+                <input type="text" class="form-control is-invalid" id="FirstName" placeholder="First Name" onkeyup="updateForm()" required>
             </div>
             <div class="col-6">
-                <input type="text" placeholder="Last Name">
+                <input type="text" class="form-control is-invalid" id="LastName" placeholder="Last Name" onkeyup="updateForm()" required>
             </div>
         </div>
         <div class="row">
             <div class="col-6">
-                <input type="text" placeholder="E-Mail">
+                <input type="text" class="form-control is-invalid" id="E-Mail" placeholder="E-Mail" onkeyup="updateForm()" required>
             </div>
             <div class="col-6">
-                <input type="text" placeholder="IP-Address">
+                <input type="text" class="form-control is-invalid" id="IP-Address" placeholder="IP-Address" onkeyup="updateForm()" required>
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <input type="reset" value="Abbrechen">
+                <input type="reset" value="Abbrechen" onclick="unloadContents()">
             </div>
             <div class="col-3">
-                <input type="submit" value="Registrieren">
+                <input type="button" value="Registrieren" onclick="loadContents()">
             </div>
         </div>
         </form>
     </main>
+    <div id="reactive">
+        <h2>Eingegebene Werte</h2>
+        <table>
+            <tr>
+                <td id="vn">Vorname: </td>
+            </tr>
+            <tr>
+                <td id="nn">Nachname: </td>
+            </tr>
+            <tr>
+                <td id="em">E-Mail: </td>
+            </tr>
+            <tr>
+                <td id="ip">IP-Adresse: </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        const array1= [["vn","Vorname: ","FirstName"],["nn","Nachname: ","LastName"],["em","E-Mail: ","E-Mail"],["ip","IP-Adresse: ","IP-Address"]];
+        function loadContents(){
+            var breaker = false;
+            array1.forEach((element) => {if(document.getElementById(element[2]).value == "") breaker = true});
+            if (!breaker){ 
+                array1.forEach((element) => document.getElementById(element[0]).innerHTML = element[1]+document.getElementById(element[2]).value);
+                array1.forEach((element) => document.getElementById(element[2]).className="form-control is-valid");
+            }
+        }
+        function unloadContents(){
+            array1.forEach((element) => document.getElementById(element[0]).innerHTML = element[1]);
+            array1.forEach((element) => document.getElementById(element[2]).className="form-control is-invalid");
+        }  
+        function updateForm(){
+            array1.forEach((element) => {if(document.getElementById(element[2]).value != "") document.getElementById(element[2]).className="form-control is-valid"});
+            array1.forEach((element) => {if(document.getElementById(element[2]).value == "") document.getElementById(element[2]).className="form-control is-invalid"});
+        }
+    </script>
 </body>

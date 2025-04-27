@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <script>
+        function myFunction1() {
+            document.getElementById("demo1").innerHTML = "Hallo FIW!";
+        }
+    </script>
+</head>
+<body>
+    <script src="myScript.js"></script>
+    <h1>Überschrift</h1>
+    <button type="button" onclick="myFunction1()">Klick mich</button>
+    <div id="demo1"></div>
+    <input id="input1" type="text" placeholder="Gibt etwas ein" onkeyup="myFunction2()"/>
+    <div id="demo2"></div>
+    <script>
+        function myFunction2() {
+            document.getElementById("demo2").innerHTML = document.getElementById("input1").value;
+        }
+    </script>
+</body>
+</html>
